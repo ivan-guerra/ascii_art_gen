@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.25)
+
+project(ascii_art_gen
+    VERSION 1.0
+    DESCRIPTION "ASCII Art Generator"
+)
+
+set(AAG_BIN_DIR "${CMAKE_SOURCE_DIR}/bin"
+    CACHE STRING "${PROJECT_NAME} binary directory.")
+
+add_compile_options(
+    -Wall
+    -Wextra
+    -pedantic
+    -Werror
+    -Wno-sign-compare
+    -std=c++2a
+    "$<$<CONFIG:DEBUG>:-O0;-g3;-ggdb>"
+)
+
+add_subdirectory(ascii_generator)
