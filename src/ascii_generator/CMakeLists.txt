@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 
+find_package(PNG REQUIRED)
+find_package(JPEG REQUIRED)
 find_package(Boost REQUIRED)
 
 project(ascii_generator DESCRIPTION "ASCII Art Generation Utility"
@@ -8,12 +10,10 @@ project(ascii_generator DESCRIPTION "ASCII Art Generation Utility"
 
 add_library(${PROJECT_NAME} STATIC ascii_generator.cc)
 
-target_include_directories(${PROJECT_NAME} SYSTEM
-    INTERFACE Boost::boost
-)
-
 target_link_libraries(${PROJECT_NAME}
-    PUBLIC -ljpeg
+    PRIVATE JPEG::JPEG
+            PNG::PNG
+            Boost::boost
 )
 
 target_include_directories(${PROJECT_NAME}
