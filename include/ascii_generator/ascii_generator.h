@@ -1,9 +1,8 @@
 #ifndef ASCII_GENERATOR_H_
 #define ASCII_GENERATOR_H_
 
+#include <boost/gil.hpp>
 #include <string>
-
-#include "CImg.h"
 
 namespace asciigen {
 
@@ -34,7 +33,7 @@ class AsciiGenerator {
     float scale_factor_;
     int char_width_;
     int char_height_;
-    cimg_library::CImg<unsigned int> image_;
+    boost::gil::rgb8_image_t image_;
 };
 
 }  // namespace asciigen

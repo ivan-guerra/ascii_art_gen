@@ -1,7 +1,7 @@
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
 
-#include "CImg.h"
 #include "ascii_generator.h"
 
 int main(int argc, char** argv) {
@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
         exit(EXIT_FAILURE);
     }
 
-    float scale_factor = 0.5;
+    float scale_factor = 0.8;
     int char_width = 10;
     int char_height = 18;
 
@@ -19,8 +19,9 @@ int main(int argc, char** argv) {
         asciigen::AsciiGenerator img_generator(argv[1], scale_factor,
                                                char_width, char_height);
         img_generator.Draw();
-    } catch (const cimg_library::CImgIOException& e) {
-        std::cerr << "error: " << e.what() << std::endl;
+    } catch (const std::ifstream::failure& e) {
+        std::cerr << "error: could not open file '" << argv[1] << "'"
+                  << std::endl;
         exit(EXIT_FAILURE);
     }
 
