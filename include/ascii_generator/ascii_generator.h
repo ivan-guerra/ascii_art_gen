@@ -8,9 +8,15 @@ namespace asciigen {
 
 class AsciiGenerator {
    public:
+    static constexpr float kDefaultScaleFactor = 1.f;
+    static const int kDefaultCharWidth = 10;
+    static const int kDefaultCharHeight = 18;
+
     AsciiGenerator() = delete;
-    AsciiGenerator(const std::string& filename, float scale_factor = 1.f,
-                   int char_width = 10, int char_height = 18);
+    AsciiGenerator(const std::string& filename,
+                   float scale_factor = kDefaultScaleFactor,
+                   int char_width = kDefaultCharWidth,
+                   int char_height = kDefaultCharHeight);
     ~AsciiGenerator() = default;
     AsciiGenerator(const AsciiGenerator&) = default;
     AsciiGenerator& operator=(const AsciiGenerator&) = default;
