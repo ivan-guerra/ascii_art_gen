@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.11...3.25)
 
 project(ascii_art_gen
     VERSION 1.0
@@ -21,4 +21,4 @@ add_compile_options(
 )
 
 add_subdirectory(src)
-add_subdirectory(ascii_generator)
+add_subdirectory(ascii_art_gen)

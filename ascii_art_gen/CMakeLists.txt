@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.11...3.25)
 
 project(asciigen DESCRIPTION "Image to ASCII Art Generator"
                  LANGUAGES   CXX
