@@ -4,11 +4,12 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <string>
 
 #include "ascii_generator.h"
 
 void PrintUsage() {
-    std::cout << "usage: asciigen [OPTIONS]... IMAGE" << std::endl;
+    std::cout << "usage: asciigen [OPTIONS]... IMAGE FILE" << std::endl;
     std::cout << "generate an ASCII art text file from an JPG or PNG image"
               << std::endl;
     std::cout << "\t-s\timage scaling factor in the range [0,1]" << std::endl;
@@ -62,11 +63,16 @@ int main(int argc, char** argv) {
         std::cerr << "run 'asciigen -h' for help" << std::endl;
         exit(EXIT_FAILURE);
     }
+    if (!argv[optind + 1]) {
+        std::cerr << "error: missing ascii text file path" << std::endl;
+        std::cerr << "run 'asciigen -h' for help" << std::endl;
+        exit(EXIT_FAILURE);
+    }
 
     try {
         asciigen::AsciiGenerator img_generator(argv[optind], scale_factor,
                                                char_width, char_height);
-        img_generator.Draw();
+        img_generator.Draw(argv[optind + 1]);
     } catch (const std::ifstream::failure& e) {
         std::cerr << "error: could not open file '" << argv[optind] << "'"
                   << std::endl;

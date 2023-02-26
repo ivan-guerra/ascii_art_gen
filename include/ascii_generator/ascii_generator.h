@@ -23,7 +23,7 @@ class AsciiGenerator {
     AsciiGenerator(AsciiGenerator&&) = default;
     AsciiGenerator& operator=(AsciiGenerator&&) = default;
 
-    void Draw();
+    void Draw(const std::string& outfile);
 
     void SetCharWidth(int char_width) { char_width_ = char_width; };
     void SetCharHeight(int char_height) { char_height_ = char_height; }

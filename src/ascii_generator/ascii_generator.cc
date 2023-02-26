@@ -41,18 +41,18 @@ AsciiGenerator::AsciiGenerator(const std::string& filename, float scale_factor,
     boost::gil::read_image(filename, image_, boost::gil::jpeg_tag{});
 }
 
-void AsciiGenerator::Draw() {
+void AsciiGenerator::Draw(const std::string& outfile) {
     UpdateImage();
 
-    std::ofstream outfile("ascii_art.txt");
+    std::ofstream outstream(outfile);
     boost::gil::rgb8_view_t image_view = boost::gil::view(image_);
     for (int j = 0; j < image_view.height(); ++j) {
         boost::gil::rgb8_view_t::x_iterator it_row = image_view.row_begin(j);
         for (int i = 0; i < image_view.width(); ++i) {
             boost::gil::rgb8_pixel_t pixel = it_row[i];
-            outfile << GetChar((pixel[0] + pixel[1] + pixel[2]) / 3);
+            outstream << GetChar((pixel[0] + pixel[1] + pixel[2]) / 3);
         }
-        outfile << std::endl;
+        outstream << std::endl;
     }
 }
 
