@@ -33,7 +33,14 @@ class AsciiGenerator {
     float GetScaleFactor() const { return scale_factor_; }
 
    private:
+    enum class ImageType {
+        kUnknown,
+        kPng,
+        kJpg,
+    };
+
     static char GetChar(int value);
+    ImageType GetImageType(const std::string& filename) const;
     void UpdateImage();
 
     float scale_factor_;

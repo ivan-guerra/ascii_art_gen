@@ -1,9 +1,9 @@
 #include <unistd.h>
 
 #include <cstdlib>
-#include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 #include "ascii_generator.h"
@@ -73,9 +73,8 @@ int main(int argc, char** argv) {
         asciigen::AsciiGenerator img_generator(argv[optind], scale_factor,
                                                char_width, char_height);
         img_generator.Draw(argv[optind + 1]);
-    } catch (const std::ifstream::failure& e) {
-        std::cerr << "error: could not open file '" << argv[optind] << "'"
-                  << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "error: " << e.what() << std::endl;
         exit(EXIT_FAILURE);
     }
 
