@@ -11,6 +11,11 @@ source config.sh
 Main()
 {
     pushd $AAG_BIN_DIR > /dev/null
+        if [ ! -f "asciigen" ]; then
+            echo -e "${LRED}error: executable 'asciigen' not found${NC}"
+            echo -e "${LRED}Did you forget to run build.sh?${NC}"
+            exit 1
+        fi
         gdb --args asciigen $@
     popd > /dev/null
 }
