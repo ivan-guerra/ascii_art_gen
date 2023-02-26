@@ -4,7 +4,7 @@ project(asciigen DESCRIPTION "Image to ASCII Art Generator"
                  LANGUAGES   CXX
 )
 
-add_executable(${PROJECT_NAME} generator.cc)
+add_executable(${PROJECT_NAME} ascii_art_gen.cc)
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE ascii_generator
