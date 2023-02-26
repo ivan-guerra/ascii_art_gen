@@ -5,6 +5,8 @@ project(ascii_art_gen
     DESCRIPTION "ASCII Art Generator"
 )
 
+set(AAG_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include"
+    CACHE STRING "${PROJECT_NAME} include directory.")
 set(AAG_BIN_DIR "${CMAKE_SOURCE_DIR}/bin"
     CACHE STRING "${PROJECT_NAME} binary directory.")
 
@@ -18,4 +20,5 @@ add_compile_options(
     "$<$<CONFIG:DEBUG>:-O0;-g3;-ggdb>"
 )
 
+add_subdirectory(src)
 add_subdirectory(ascii_generator)
